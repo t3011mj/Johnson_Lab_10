@@ -19,7 +19,7 @@ public class Validator {
             boolean isValid = false;
             while (isValid == false)
             {
-                System.out.print(prompt);
+                System.out.println(prompt);
                 if (sc.hasNextInt())
                 {
                     i = sc.nextInt();

@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static Validator valid = new Validator();
+    public static ArrayList<NewCar> carList = new ArrayList<NewCar>();
+
     public static void main(String[] args) {
 
         int inputIndex = 0;
@@ -15,10 +18,10 @@ public class Main {
         String newused = " ";
         int year = 0;
         double price = 0.0;
+        int max = 0;
 
         Scanner scan1 = new Scanner(System.in);
 
-        ArrayList<NewCar> carList = new ArrayList<NewCar>();
 
         carList.add(new NewCar(1, "Mercedes Benz", "E350", "New", 2017, 60000));
         carList.add(new NewCar(2, "Mercedes Benz", "C300", "New", 2017, 50000));
@@ -40,18 +43,18 @@ public class Main {
 
         System.out.println();
 
-        System.out.println("Enter the number of the Vehicle that you wish to purchase:");
-        inputIndex = scan1.nextInt() - 1;
+        inputIndex = valid.getInt(scan1, "Enter the number of the Vehicle that you wish to purchase:",1, 8);
+        int actualIndex = inputIndex - 1;
 
-        System.out.println("Selected vehicle is: " + carList.get(inputIndex));
+        System.out.println("Selected vehicle is: " + carList.get(actualIndex));
         System.out.println();
         System.out.println("Do you want to buy the car? (Y/N");
-        scan1.nextLine();
+        // scan1.nextLine();
         inputBuy = scan1.nextLine();
 
         if (inputBuy.equalsIgnoreCase("Y")) {
-            System.out.println("To be removed:" + carList.get(inputIndex));
-            carList.remove(inputIndex);
+            System.out.println("To be removed:" + carList.get(actualIndex));
+            carList.remove(actualIndex);
         }
 
         System.out.println();
